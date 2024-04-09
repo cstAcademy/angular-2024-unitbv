@@ -30,6 +30,12 @@ export class GameService {
     return this._savedGame;
   }
 
+  searchByTitle(vales: string): Game[] {
+    return this.listOfGames.filter((game: Game) =>
+      game.title.toLowerCase().includes(vales.toLowerCase())
+    );
+  }
+
   private composeListOfGames(): Game[] {
     return [
       {

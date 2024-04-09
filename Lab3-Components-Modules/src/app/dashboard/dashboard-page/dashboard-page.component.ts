@@ -11,6 +11,8 @@ export class DashboardPageComponent implements OnInit {
   arrayOfGames: Game[] = [];
   bestVotedGame: Game | null = null;
 
+  searchValue: string = '';
+
   constructor(private gameService: GameService) {
     this.gameService.bestGameSubject$.subscribe((game) => {
       this.bestVotedGame = game;
@@ -23,5 +25,10 @@ export class DashboardPageComponent implements OnInit {
 
   getListOfGames() {
     this.arrayOfGames = this.gameService.getListOfGames();
+  }
+
+  searchGame() {
+    const listFiltered = this.gameService.searchByTitle(this.searchValue);
+    console.log(listFiltered);
   }
 }
