@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from 'src/app/core/game.interface';
+import { GameService } from 'src/app/core/game.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -6,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-  arrayOfGames = [1, 2, 3];
+  arrayOfGames: Game[] = [];
+  bestVotedGame: Game | null = null;
 
-  constructor() {}
+  constructor(private gameService: GameService) {
+    this.gameService.bestGameSubject$.subscribe((game) => {
+      this.bestVotedGame = game;
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getListOfGames();
+  }
+
+  getListOfGames() {
+    this.arrayOfGames = this.gameService.getListOfGames();
+  }
 }

@@ -4,6 +4,9 @@
   max-width: 300px;
   padding: 1rem;
   min-height: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
   img {
     width: 100%;

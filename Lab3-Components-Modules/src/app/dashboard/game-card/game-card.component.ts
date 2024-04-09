@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Game } from 'src/app/core/game.interface';
+import { GameService } from 'src/app/core/game.service';
 
 @Component({
-  selector: 'app-game-card',
+  selector: 'app-game-card[game]',
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.scss'],
 })
 export class GameCardComponent implements OnInit {
-  game = {
-    title: 'Dwarf Fortress',
-    image:
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/975370/header.jpg?t=1670338868',
-    description:
-      "The deepest, most intricate simulation of a world that's ever been created.",
-  };
+  @Input() game!: Game;
 
   review: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private gameService: GameService) {}
 
   ngOnInit(): void {}
 
   navigateToGamePage() {
+    this.gameService.saveGameToService(this.game);
     this.router.navigateByUrl('/game-page');
   }
 
   clearReview() {
     this.review = '';
+  }
+
+  voteGame() {
+    this.gameService.voteBestGame(this.game);
   }
 }

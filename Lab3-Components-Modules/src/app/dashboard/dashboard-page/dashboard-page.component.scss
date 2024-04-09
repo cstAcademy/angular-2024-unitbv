@@ -1,0 +1,12 @@
+#games-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.best-game-award-container {
+  font-size: 16px;
+  font-weight: 700;
+}

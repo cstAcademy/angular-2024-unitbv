@@ -1,6 +1,10 @@
-<p>dashboard-page works!</p>
+<p class="best-game-award-container" *ngIf="bestVotedGame">
+  Best game: {{ bestVotedGame.title }}
+</p>
 
-<div *ngFor="let game of arrayOfGames; let index = index">
-  {{ index }}
-  <app-game-card *ngIf="index !== 1"></app-game-card>
+<div id="games-container">
+  <app-game-card
+    *ngFor="let game of arrayOfGames"
+    [game]="game"
+  ></app-game-card>
 </div>
