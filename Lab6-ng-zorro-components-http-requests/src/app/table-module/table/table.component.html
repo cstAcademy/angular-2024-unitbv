@@ -1,0 +1,29 @@
+<nz-table
+  #basicTable
+  [nzData]="users"
+  [nzShowPagination]="basicTable.data && !isLoading"
+>
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="basicTable.data && !isLoading">
+    <tr *ngFor="let data of basicTable.data">
+      <td><img style="width: 50px" [src]="data.avatar" alt="avatar" /></td>
+      <td>{{ data.first_name }}</td>
+      <td>{{ data.last_name }}</td>
+      <td>{{ data.email }}</td>
+      <td>
+        <a>Action 一 {{ data.first_name }}</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<div *ngIf="isLoading" id="spinner">
+  <nz-spin [nzSize]="'large'" nzSimple></nz-spin>
+</div>
