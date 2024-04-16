@@ -1,0 +1,93 @@
+<div *ngIf="userForm">
+  <form nz-form [formGroup]="userForm" (ngSubmit)="addNewUser()">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            formControlName="firstName"
+            nz-input
+            placeholder="First name"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <p
+      *ngIf="
+        firstName?.touched &&
+        userForm.controls['firstName'].hasError('invalidSymbols')
+      "
+      class="error-message"
+    >
+      Only letters are allowed
+    </p>
+    <p
+      *ngIf="
+        firstName?.touched &&
+        userForm.controls['firstName'].hasError('required')
+      "
+      class="error-message"
+    >
+      This field is required
+    </p>
+
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="user">
+          <input formControlName="lastName" nz-input placeholder="Last name" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <p
+      *ngIf="
+        lastName?.touched &&
+        userForm.controls['lastName'].hasError('invalidSymbols')
+      "
+      class="error-message"
+    >
+      Only letters are allowed
+    </p>
+    <p
+      *ngIf="
+        lastName?.touched && userForm.controls['lastName'].hasError('required')
+      "
+      class="error-message"
+    >
+      This field is required
+    </p>
+
+    <!-- <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your job!">
+        <nz-input-group nzPrefixIcon="user">
+          <input formControlName="job" nz-input placeholder="Job" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item> -->
+
+    <nz-form-item>
+      <nz-form-control>
+        <nz-select
+          id="gender"
+          formControlName="job"
+          nzPlaceHolder="Select a job option"
+        >
+          <nz-option nzValue="job1" nzLabel="job1"></nz-option>
+          <nz-option nzValue="job1" nzLabel="job2"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <p
+      *ngIf="job?.touched && userForm.controls['job'].hasError('required')"
+      class="error-message"
+    >
+      This field is required
+    </p>
+
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary" [disabled]="!userForm.valid">
+          Submit
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

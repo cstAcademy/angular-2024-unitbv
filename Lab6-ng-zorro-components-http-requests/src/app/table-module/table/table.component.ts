@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { User } from './_helpers/models/user';
-import { UserService } from './_helpers/service/user.service';
+import { User } from '../helpers/models/user';
+import { UserService } from '../helpers/user.service';
 
 @Component({
   selector: 'app-table',
@@ -10,6 +10,8 @@ import { UserService } from './_helpers/service/user.service';
 })
 export class TableComponent {
   users: User[] = [];
+
+  isAddNewUserFormVisible: boolean = false;
   isLoading: boolean = true;
 
   constructor(
@@ -36,5 +38,9 @@ export class TableComponent {
         this.notificationService.error('Error', 'Something went wrong');
       },
     });
+  }
+
+  toggleAddUser() {
+    this.isAddNewUserFormVisible = true;
   }
 }
