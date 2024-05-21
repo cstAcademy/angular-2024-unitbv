@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { CreateUserFormComponent } from './create-user-form/create-user-form.component';
 import { TableRoutingModule } from './table-routing.module';
 import { TableComponent } from './table/table.component';
-import { CreateUserFormComponent } from './create-user-form/create-user-form.component';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [TableComponent, CreateUserFormComponent],
@@ -24,6 +25,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzInputModule,
     NzSelectModule,
     NzButtonModule,
+    NzIconModule,
 
     // *required for forms!
     ReactiveFormsModule,

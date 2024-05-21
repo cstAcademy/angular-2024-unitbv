@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { AuthService } from 'src/app/auth/_helpers/services/auth.service';
 import { User } from '../helpers/models/user';
 import { UserService } from '../helpers/user.service';
 
@@ -16,7 +17,8 @@ export class TableComponent {
 
   constructor(
     private userService: UserService,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +44,9 @@ export class TableComponent {
 
   toggleAddUser() {
     this.isAddNewUserFormVisible = true;
+  }
+
+  logOut() {
+    this.authService.logOut();
   }
 }

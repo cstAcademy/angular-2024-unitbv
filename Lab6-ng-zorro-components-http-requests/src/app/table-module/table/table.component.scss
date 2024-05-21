@@ -1,3 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  padding: 20px 30px 0 30px;
+}
+
 #spinner {
   text-align: center;
   background: rgba(0, 0, 0, 0.05);
@@ -9,3 +16,4 @@
 .main-container {
   padding: 20px 30px;
 }
+
